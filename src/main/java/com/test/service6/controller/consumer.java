@@ -23,4 +23,5 @@ public class consumer {
     public String getVersion(){
         return mSendRequest.sendRequest("http://gateway/service5/provider/getServiceInfo","1.0.0", String.class, RequestMethod.GET);
     }
+
 }
