@@ -2,6 +2,7 @@ package com.test.service6.controller;
 
 import com.test.service6.utils.MSendRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,11 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/consumer")
 public class consumer {
 
-    @Autowired
-    private MSendRequest mSendRequest;
+    @Value("${eureka.instance.metadata-map.version}")
+    private String version;
+
     @GetMapping("/get")
     public String getVersion(){
-        return mSendRequest.sendRequest("http://gateway/service5/provider/getServiceInfo","1.0.0", String.class, RequestMethod.GET);
+        return this.version;
     }
+
 
 }
