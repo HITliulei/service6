@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: service6
+server:
+  port: 8060
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      serviceName: service6
+      version: v1.0.0
+      serviceDepencies:
+        service5: v1.0.0, v1.1.0
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://${MCLUSTER_IP}:${MCLUSTER_PORT}/eureka
